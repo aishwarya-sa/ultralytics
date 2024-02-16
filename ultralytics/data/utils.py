@@ -117,7 +117,7 @@ def verify_image_label(args):
 
         # Verify labels
         im=cv2.imread(im_file, cv2.IMREAD_UNCHANGED)
-        height, width, channels = img.shape
+        height, width, channels = im.shape
         shape=(height, width)
         if os.path.isfile(lb_file):
             nf = 1  # label found
