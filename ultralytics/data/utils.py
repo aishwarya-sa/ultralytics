@@ -89,7 +89,9 @@ def verify_image(args):
         nf = 1
     except Exception as e:
         nc = 1
+         
         msg = f"{prefix}WARNING ⚠️ {im_file}: ignoring corrupt image/label: {e}"
+        msg="hello aish"
     return (im_file, cls), nf, nc, msg
 
 
@@ -158,6 +160,7 @@ def verify_image_label(args):
                 kpt_mask = np.where((keypoints[..., 0] < 0) | (keypoints[..., 1] < 0), 0.0, 1.0).astype(np.float32)
                 keypoints = np.concatenate([keypoints, kpt_mask[..., None]], axis=-1)  # (nl, nkpt, 3)
         lb = lb[:, :5]
+        msg="hello aish"
         return im_file, lb, shape, segments, keypoints, nm, nf, ne, nc, msg
     except Exception as e:
         nc = 1
