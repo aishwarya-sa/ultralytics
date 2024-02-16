@@ -152,9 +152,9 @@ class BaseDataset(Dataset):
                 except Exception as e:
                     LOGGER.warning(f"{self.prefix}WARNING ⚠️ Removing corrupt *.npy image file {fn} due to: {e}")
                     Path(fn).unlink(missing_ok=True)
-                    im = cv2.imread(f)  # BGR
+                    im = cv2.imread(f,cv2.IMREAD_UNCHANGED)  # BGR
             else:  # read image
-                im = cv2.imread(f)  # BGR
+                im = cv2.imread(f,cv2.IMREAD_UNCHANGED)  # BGR
             if im is None:
                 raise FileNotFoundError(f"Image Not Found {f}")
 
@@ -199,7 +199,7 @@ class BaseDataset(Dataset):
         """Saves an image as an *.npy file for faster loading."""
         f = self.npy_files[i]
         if not f.exists():
-            np.save(f.as_posix(), cv2.imread(self.im_files[i]), allow_pickle=False)
+            np.save(f.as_posix(), cv2.imread(self.im_files[i],cv2.IMREAD_UNCHANGED), allow_pickle=False)
 
     def check_cache_ram(self, safety_margin=0.5):
         """Check image caching requirements vs available memory."""
