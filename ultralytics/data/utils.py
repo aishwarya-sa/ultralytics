@@ -72,6 +72,7 @@ def verify_image(args):
     (im_file, cls), prefix = args
     # Number (found, corrupt), message
     nf, nc, msg = 0, 0, ""
+    print("say hi")
     try:
         im = Image.open(im_file)
         im.verify()  # PIL verify
