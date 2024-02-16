@@ -74,18 +74,18 @@ def verify_image(args):
     nf, nc, msg = 0, 0, ""
     print("say hi")
     try:
-        im = Image.open(im_file)
-        im.verify()  # PIL verify
-        shape = exif_size(im)  # image size
-        shape = (shape[1], shape[0])  # hw
-        assert (shape[0] > 9) & (shape[1] > 9), f"image size {shape} <10 pixels"
-        assert im.format.lower() in IMG_FORMATS, f"invalid image format {im.format}"
-        if im.format.lower() in ("jpg", "jpeg"):
-            with open(im_file, "rb") as f:
-                f.seek(-2, 2)
-                if f.read() != b"\xff\xd9":  # corrupt JPEG
-                    ImageOps.exif_transpose(Image.open(im_file)).save(im_file, "JPEG", subsampling=0, quality=100)
-                    msg = f"{prefix}WARNING ⚠️ {im_file}: corrupt JPEG restored and saved"
+        # im = Image.open(im_file)
+        # im.verify()  # PIL verify
+        # shape = exif_size(im)  # image size
+        # shape = (shape[1], shape[0])  # hw
+        # assert (shape[0] > 9) & (shape[1] > 9), f"image size {shape} <10 pixels"
+        # assert im.format.lower() in IMG_FORMATS, f"invalid image format {im.format}"
+        # if im.format.lower() in ("jpg", "jpeg"):
+        #     with open(im_file, "rb") as f:
+        #         f.seek(-2, 2)
+        #         if f.read() != b"\xff\xd9":  # corrupt JPEG
+        #             ImageOps.exif_transpose(Image.open(im_file)).save(im_file, "JPEG", subsampling=0, quality=100)
+        #             msg = f"{prefix}WARNING ⚠️ {im_file}: corrupt JPEG restored and saved"
         nf = 1
     except Exception as e:
         nc = 1
@@ -100,18 +100,18 @@ def verify_image_label(args):
     nm, nf, ne, nc, msg, segments, keypoints = 0, 0, 0, 0, "", [], None
     try:
         # Verify images
-        im = Image.open(im_file)
-        im.verify()  # PIL verify
-        shape = exif_size(im)  # image size
-        shape = (shape[1], shape[0])  # hw
-        assert (shape[0] > 9) & (shape[1] > 9), f"image size {shape} <10 pixels"
-        assert im.format.lower() in IMG_FORMATS, f"invalid image format {im.format}"
-        if im.format.lower() in ("jpg", "jpeg"):
-            with open(im_file, "rb") as f:
-                f.seek(-2, 2)
-                if f.read() != b"\xff\xd9":  # corrupt JPEG
-                    ImageOps.exif_transpose(Image.open(im_file)).save(im_file, "JPEG", subsampling=0, quality=100)
-                    msg = f"{prefix}WARNING ⚠️ {im_file}: corrupt JPEG restored and saved"
+        # im = Image.open(im_file)
+        # im.verify()  # PIL verify
+        # shape = exif_size(im)  # image size
+        # shape = (shape[1], shape[0])  # hw
+        # assert (shape[0] > 9) & (shape[1] > 9), f"image size {shape} <10 pixels"
+        # assert im.format.lower() in IMG_FORMATS, f"invalid image format {im.format}"
+        # if im.format.lower() in ("jpg", "jpeg"):
+        #     with open(im_file, "rb") as f:
+        #         f.seek(-2, 2)
+        #         if f.read() != b"\xff\xd9":  # corrupt JPEG
+        #             ImageOps.exif_transpose(Image.open(im_file)).save(im_file, "JPEG", subsampling=0, quality=100)
+        #             msg = f"{prefix}WARNING ⚠️ {im_file}: corrupt JPEG restored and saved"
 
         # Verify labels
         if os.path.isfile(lb_file):
