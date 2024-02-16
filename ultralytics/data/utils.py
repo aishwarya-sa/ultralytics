@@ -116,6 +116,9 @@ def verify_image_label(args):
         #             msg = f"{prefix}WARNING ⚠️ {im_file}: corrupt JPEG restored and saved"
 
         # Verify labels
+        im=cv2.imread(im_file, cv2.IMREAD_UNCHANGED)
+        height, width, channels = img.shape
+        shape=(width, height)
         if os.path.isfile(lb_file):
             nf = 1  # label found
             with open(lb_file) as f:
