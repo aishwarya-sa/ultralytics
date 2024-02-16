@@ -118,7 +118,7 @@ def verify_image_label(args):
         # Verify labels
         im=cv2.imread(im_file, cv2.IMREAD_UNCHANGED)
         height, width, channels = img.shape
-        shape=(width, height)
+        shape=(height, width)
         if os.path.isfile(lb_file):
             nf = 1  # label found
             with open(lb_file) as f:
@@ -164,6 +164,7 @@ def verify_image_label(args):
                 keypoints = np.concatenate([keypoints, kpt_mask[..., None]], axis=-1)  # (nl, nkpt, 3)
         lb = lb[:, :5]
         msg="hello aish"
+        shape=(height, width)
         return im_file, lb, shape, segments, keypoints, nm, nf, ne, nc, msg
     except Exception as e:
         nc = 1
