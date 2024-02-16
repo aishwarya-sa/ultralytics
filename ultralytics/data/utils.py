@@ -91,7 +91,7 @@ def verify_image(args):
         nc = 1
          
         msg = f"{prefix}WARNING ⚠️ {im_file}: ignoring corrupt image/label: {e}"
-        msg="hello aish"
+      
     return (im_file, cls), nf, nc, msg
 
 
@@ -165,7 +165,7 @@ def verify_image_label(args):
     except Exception as e:
         nc = 1
         msg = f"{prefix}WARNING ⚠️ {im_file}: ignoring corrupt image/label: {e}"
-        msg="hello aish"
+       
         return [None, None, None, None, None, nm, nf, ne, nc, msg]
 
 
